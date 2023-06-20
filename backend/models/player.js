@@ -1,7 +1,8 @@
 // import mongoose module
+
 const mongoose = require("mongoose");
 
-// create match Schema
+// Create match Schema
 const playerSchema = mongoose.Schema({
   nbr: Number,
   age: Number,
