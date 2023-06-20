@@ -1,0 +1,53 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Search Matches</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="searchForm">
+                    <div class="form-group">
+                        <input type="number" class="form-control" formControlName="s1" placeholder="Score One ...">
+                    </div>
+                    <div *ngIf="searchForm.controls['s1'].invalid && 
+                        (searchForm.controls['s1'].touched || 
+                        searchForm.controls['s1'].dirty)">
+                        <div *ngIf="searchForm.controls['s1'].errors.required">
+                            Score One is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" formControlName="s2" placeholder="Score Two ...">
+                    </div>
+                    <div *ngIf="searchForm.controls['s2'].invalid && 
+                        (searchForm.controls['s2'].touched || 
+                        searchForm.controls['s2'].dirty)">
+                        <div *ngIf="searchForm.controls['s2'].errors.required">
+                            Score Two is required
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="search()" [disabled]="searchForm.invalid"
+                            class="btn btn-primary py-3 px-5" value="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div *ngFor="let m of matches">
+            <app-result [matchInput]="m"></app-result>
+        </div>
+        <div *ngIf="matches?.length == 0">
+            No Founded Matches
+        </div>
+
+    </div>
+</div>

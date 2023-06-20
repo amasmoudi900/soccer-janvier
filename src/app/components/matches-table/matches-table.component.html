@@ -1,0 +1,31 @@
+<div>
+    <form>
+        <div class="form-group mt-3">
+            <label for="">Team One | Team Two</label>
+            <input type="text" class="form-control"  [(ngModel)]="term" name="term">
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Score One</th>
+        <th>Score Two</th>
+        <th>Team One</th>
+        <th>Team Two</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let match of matchesTab | myFilter : term ">
+        <td>{{match._id}}</td>
+        <td>{{match.scoreOne}}</td>
+        <td>{{match.scoreTwo}}</td>
+        <td>{{match.teamOne }}</td>
+        <td>{{match.teamTwo}}</td>
+        <td>
+            <button class="btn btn-success" (click)="goToInfo(match._id)">Display</button>
+            <button class="btn btn-warning" (click)="goToEdit(match._id)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteMatch(match._id)">Delete</button>
+        </td>
+    </tr>
+</table>
